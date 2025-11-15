@@ -2,22 +2,25 @@ FIcon = ico\ganyu_tool.ico
 Menu, Tray, Icon, %FIcon%
 
 ; --- on keypress detection
-*f1::
+$`::
+    SendInput {e}
+    RSleep(480)
+
     ; four first attacks
     Loop 2 {
-        ChargeAttack()
+        ChargeAttack(1675)
 
-        RSleep(200, 202)
+        RSleep(200)
         SendInput {r}
 
-        ChargeAttack()
+        ChargeAttack(1675)
 
         Send {Click Right}
-        RSleep(210, 212)
+        RSleep(200)
     }
 
     ; fifth attack
-    ChargeAttack()
+    ChargeAttack(1668)
 
 return
 
@@ -26,13 +29,14 @@ return
     Sleep 500
 return
 
-ChargeAttack() {
+ChargeAttack(t) {
+    Random, ct, t, t + 4
     Click, Down
-    RSleep(1680, 1682)
+    RSleep(ct)
     Click, Up
 }
 
-RSleep(l, r) {
-    Random, SleepTime, l, r
+RSleep(t) {
+    Random, SleepTime, t, t + 4
     Sleep SleepTime
 }
