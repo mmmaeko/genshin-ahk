@@ -3,9 +3,7 @@ Menu, Tray, Icon, %FIcon%
 
 ; --- on keypress detection
 $`::
-    ; first rotation: 2x ChargeDash -> Finisher
     ChargeDash(false)
-    ChargeDash(true)
 return
 
 *f3::
@@ -34,24 +32,4 @@ ChargeDash(waitForFinisher) {
         ; wait before next ChargeDash
         Sleep 300 - pseudo_hold_time
     }
-}
-
-Charge2Dash() {
-    Random, wait_time, 70, 80
-    Random, hold_time, 1100, 1115
-
-    ; pretty similar to ChargeDash,
-    ; but hold longer so as to output the 2nd charge attack
-    Click, Down
-    Sleep wait_time
-    Send {Click Right}
-    Sleep hold_time
-    Click, Up
-
-    Sleep 2100 - hold_time
-}
-
-RSleep(t) {
-    Random, SleepTime, t, t + 5
-    Sleep SleepTime
 }
